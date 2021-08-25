@@ -1,0 +1,51 @@
+
+public class Main 
+{ 
+    static int removeDuplicates(int array[], int length) 
+    { 
+        int uniqueElementIndexPosn=-1;
+        for(int startIndex=0;startIndex<length-1;startIndex++){
+            if(array[startIndex]!=array[startIndex+1]){
+                uniqueElementIndexPosn++;
+               // System.out.print(uniqueElementIndexPosn);
+                array[uniqueElementIndexPosn]=array[startIndex];
+            }
+        }
+        uniqueElementIndexPosn++;
+        array[uniqueElementIndexPosn]=array[length-1];
+        //Write your code Here 
+       // System.out.println("Chk "+uniqueElementIndexPosn);
+        return uniqueElementIndexPosn+1; 
+    } 
+      
+    public static void main (String[] args)  
+    { 
+        int array[] = {1,1,2}; 
+        int n = array.length; 
+          
+        n = removeDuplicates(array, n);
+        
+        for (int i=0; i<n; i++) 
+           System.out.print(array[i]+" "); 
+    } 
+} 
+
+/* Try more Inputs
+
+case1:
+actual = removeDuplicates([1,1,2],3)
+expected = 2
+
+case2:
+actual = removeDuplicates([2, 2, 2, 2, 2],5)
+expected = 1
+
+case3:
+actual = removeDuplicates([1, 2, 2, 3, 4, 4, 4, 5, 5],9)
+expected = 5
+
+case4:
+actual = removeDuplicates([1,2,3,4,5],5)
+expected = 5
+
+*/
