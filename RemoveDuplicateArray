@@ -3,19 +3,19 @@ public class Main
 { 
     static int removeDuplicates(int array[], int length) 
     { 
-        int uniqueElementIndexPosn=-1;
+        int uniqueElementIndexPosn=0;
         for(int startIndex=0;startIndex<length-1;startIndex++){
             if(array[startIndex]!=array[startIndex+1]){
-                uniqueElementIndexPosn++;
+                
                // System.out.print(uniqueElementIndexPosn);
-                array[uniqueElementIndexPosn]=array[startIndex];
+                array[uniqueElementIndexPosn++]=array[startIndex];
             }
         }
-        uniqueElementIndexPosn++;
-        array[uniqueElementIndexPosn]=array[length-1];
+        
+        array[uniqueElementIndexPosn++]=array[length-1];
         //Write your code Here 
        // System.out.println("Chk "+uniqueElementIndexPosn);
-        return uniqueElementIndexPosn+1; 
+        return uniqueElementIndexPosn; 
     } 
       
     public static void main (String[] args)  
