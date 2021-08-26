@@ -1,0 +1,52 @@
+import java.util.Arrays; 
+  
+public class Main  
+{ 
+    // Given number as int array, this function finds the greatest number and give the number as integer
+    static void findNextNumber(char array[], int n)  
+    { 
+         //Practise Yourself : Write your code Here
+         int i;
+         for(i=n-1;i>0;i--){
+             if(array[i-1]<array[i]){
+                 break;
+             }
+         }
+         int element=array[i-1],min=i;
+         for(int j=i+1;j<n;j++){
+             if(array[j]>element && array[j]<array[min]){
+                 min=j;
+             }
+         }
+         swap(array,i-1,min);
+         Arrays.sort(array,i,n);
+         Arrays.asList(array).forEach((e)->System.out.println(e));
+    } 
+    
+    static void swap(char array[],int source,int destination){
+        int temp=array[source];
+        array[source]=array[destination];
+        array[destination]=(char)temp;
+    }
+  
+    public static void main(String[] args)  
+    { 
+        char array[] = { '6','9','3','8','6','5','2' };
+        int n = array.length; 
+        findNextNumber(array, n); 
+    } 
+} 
+
+/* Try more Inputs
+case 1: 
+actual = findNextNumber([1,2,3,4],4)
+expected = 1243
+
+case2: 
+ actual = findNextNumber([5,3,4,9,7,6],6)
+ expected = 536479
+ 
+case3: 
+actual = findNextNumber([6,9,3,8,6,5,2],7)
+expected = 6952368
+*/
