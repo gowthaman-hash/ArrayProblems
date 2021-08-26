@@ -1,0 +1,48 @@
+
+class Main {
+  public static void main(String[] args) {
+  
+    //Write your Code Here
+   int actual = findElement(new int[]{5, 1, 4, 4},4);
+   
+   System.out.println(actual);
+    
+  }
+  
+  static int findElement(int inputArray[],int length){
+      int leftMaxArray[]=new int[length];
+      leftMaxArray[0]=Integer.MIN_VALUE;
+      
+      for(int i=1;i<length;i++){
+          leftMaxArray[i]=Math.max(leftMaxArray[i-1],inputArray[i-1]);
+      }
+      int right=Integer.MAX_VALUE;
+      
+      for(int i=length-1;i>=0;i--){
+          if(leftMaxArray[i]<inputArray[i] && inputArray[i]<right){
+              return i;
+          }
+          right=Math.min(right,inputArray[i]);
+      }
+      return -1;
+  }
+}
+
+/* Try more Inputs
+
+findElement(array, length_of_array)
+
+
+case1: 
+actual = findElement([5, 1, 4, 3, 6, 8, 10, 7, 9],9)
+expected = 4
+
+case2: 
+actual = findElement([6, 2, 5, 4, 7, 9, 11, 8, 10],9)
+expected = 4
+
+case3:
+actual = findElement([5, 1, 4, 4],4)
+expected = -1
+
+*/
