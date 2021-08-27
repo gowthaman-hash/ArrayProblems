@@ -1,0 +1,51 @@
+
+import java.util.Arrays;
+
+public class Main
+{
+    static int minimumNumberOfPlatform(int arrival[], int departure[], int n) 
+    { 
+        //Practise Yourself :  Write your code Here 
+        Arrays.sort(arrival);
+        Arrays.sort(departure);
+        int maxPlatforms=1,platformNeeded=1;
+        int i=1,j=0;
+        while(i<n&&j<n){
+            if(arrival[i]<=departure[j]){
+                platformNeeded++;
+                i++;
+                if(platformNeeded>maxPlatforms){
+                    maxPlatforms=platformNeeded;
+                }
+            }else  if(arrival[i]>departure[j]){
+                platformNeeded--;
+                j++;
+            }
+        }
+        return maxPlatforms; 
+    } 
+	public static void main(String[] args)
+	{
+		int[] arrival = {900, 1100, 1235 };
+		int[] departure = {1000, 1200, 1240};
+         int n = arrival.length; 
+
+		System.out.print("Minimum platforms required is "
+					+ minimumNumberOfPlatform(arrival, departure,n));
+	}
+}
+
+/* Try more Inputs
+case 1: 
+actual = minimumNumberOfPlatform(
+[900,940,950,1100,1500,1800],[910, 1200, 1120, 1130, 1900, 2000],6)
+expected = 3
+
+case2: 
+actual = minimumNumberOfPlatform([200, 210, 300, 320, 350, 500],[230, 340, 320, 430, 400, 520],6)
+expected = 3
+ 
+case3: 
+actual = minimumNumberOfPlatform([900, 1100, 1235],[1000, 1200, 1240],3)
+expected = 1
+*/
