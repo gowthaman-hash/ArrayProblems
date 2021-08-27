@@ -1,0 +1,40 @@
+public class Main
+{
+    public static int candy(int[] ratings) 
+    {
+        if(ratings==null||ratings.length==0){
+            return 0;
+        }
+        int length=ratings.length;
+        int leftArray[]=new int[length];
+        int rightArray[]=new int[length];
+        leftArray[0]=1;
+        for(int i=1;i<length;i++){
+            if(ratings[i-1]<ratings[i]){
+                leftArray[i]=leftArray[i-1]+1;
+            }else{
+                leftArray[i]=1;
+            }
+        }
+        rightArray[length-1]=1;
+        for(int i=length-2;i>=0;i--){
+            if(ratings[i+1]<ratings[i]){
+                rightArray[i]=rightArray[i+1]+1;
+            }else{
+                rightArray[i]=1;
+            }
+        }
+        int candiesInd=0,result=0;
+        while(candiesInd<length){
+            int maxCandy=Math.max(leftArray[candiesInd],rightArray[candiesInd]);
+            result=result+maxCandy;
+            candiesInd++;
+        }
+	    return result;
+    }
+	public static void main(String[] args) {
+	  int ratings[] = {1,5,2,2};
+	  int result = candy(ratings);
+	  System.out.println(result);
+	}
+}
